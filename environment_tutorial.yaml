@@ -1,0 +1,17 @@
+name: pypsa-eur-tutorial
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - pip
+
+  # Include ipython so that one does not inadvertently drop out of the conda
+  # environment by calling ipython
+  - ipython
+  - xarray  #  to import/export networks
+
+  # GIS dependencies have to come all from conda-forge
+  - conda-forge::pypsa
+  - conda-forge::jupyter
+  - conda-forge::glpk
+  - conda-forge::geopandas
