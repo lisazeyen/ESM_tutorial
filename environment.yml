@@ -1,34 +1,17 @@
-name: esm-tutorials
+name: pypsa-eur-tutorial
 channels:
-    - conda-forge
-    - defaults
+  - conda-forge
 dependencies:
+  - python
+  - pip
 
-    - python
-    - pip
+  # Include ipython so that one does not inadvertently drop out of the conda
+  # environment by calling ipython
+  - ipython
+  - xarray  #  to import/export networks
 
-    # notebooks
-    - jupyter
-    - jupyterlab
-    - nb_conda
-
-    # utilities
-    - ipython
-    - numpy
-    - scipy
-    - pandas
-    - geopandas
-    - xarray
-    - netcdf4
-    - networkx
-    - matplotlib
-    - yaml
-
-    # optimisation
-    - pyomo
-    - scikit-learn
-    - glpk
-    - ipopt
-
-    # power system analysis
-    - pypsa
+  # GIS dependencies have to come all from conda-forge
+  - conda-forge::pypsa
+  - conda-forge::jupyter
+  - conda-forge::glpk
+  - conda-forge::geopandas
