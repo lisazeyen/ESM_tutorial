@@ -1,0 +1,184 @@
+\documentclass[11pt,a4paper,fleqn]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue, filecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{
+     colorlinks   = true,
+     citecolor    = gray
+}
+\usepackage{wrapfig}
+
+\usepackage{caption}
+\captionsetup{format=plain, indent=5pt, font=footnotesize, labelfont=bf}
+
+\setkomafont{disposition}{\scshape\bfseries}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bbm}
+\usepackage{mathtools}
+% \usepackage{epsfig}
+% \usepackage{grffile}
+%\usepackage{times}
+%\usepackage{babel}
+\usepackage{tikz}
+\usepackage{paralist}
+\usepackage{color}
+\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=3cm]{geometry}
+%\setlength{\mathindent}{1ex}
+
+% PGF
+\usepackage{pgfplots}
+\usepackage{pgf}
+\usepackage{siunitx}
+\usepackage{xfrac}
+\usepackage{calculator}
+\usepackage{calculus}
+\usepackage{eurosym}
+\usepackage{booktabs}
+%\sisetup{per-mode=fraction,%
+%	fraction-function=\sfrac}
+
+%\newcommand{\eur}[1]{\EUR{#1}\si{\per\kilo\meter}}
+\pgfplotsset{
+  compat=newest,
+  every axis/.append style={small, minor tick num=3}
+}
+
+%\usepackage[backend=biber,style=alphabetic,url=false,doi=false]{biblatex}
+%\addbibresource{sheet01_biber.bib}
+% \addbibresource{/home/coroa/papers/refs.bib}
+
+\newcommand{\id}{\mathbbm{1}}
+\newcommand{\NN}{{\mathbbm{N}}}
+\newcommand{\ZZ}{{\mathbbm{Z}}}
+\newcommand{\RR}{{\mathbbm{R}}}
+\newcommand{\CC}{{\mathbbm{C}}}
+\renewcommand{\vec}[1]{{\boldsymbol{#1}}}
+
+\renewcommand{\i}{\mathrm{i}}
+
+\newcommand{\expect}[1]{\langle\,#1\,\rangle}
+\newcommand{\e}[1]{\ensuremath{\,\mathrm{#1}}}
+
+\renewcommand{\O}{\mc{O}}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\ud}[1]{\textup{d}#1\,}
+
+\newcommand{\unclear}[1]{\color{green}#1}
+\newcommand{\problem}[1]{\color{red}#1}
+\newcommand{\rd}[1]{\num[round-mode=places,round-precision=1]{#1}}
+
+%\DeclareSIUnit{\euro}{\EUR}
+\DeclareSIUnit{\dollar}{\$}
+\newcommand{\eur}{\text{\EUR{}}}
+
+\usepackage{palatino}
+\usepackage{mathpazo}
+\setlength\parindent{0pt}
+\usepackage{xcolor}
+\usepackage{framed}
+\definecolor{shadecolor}{rgb}{.9,.9,.9}
+
+%=====================================================================
+%=====================================================================
+\begin{document}
+
+\begin{flushright}
+ \textbf{Energy System Modelling }\\
+ {\small Karlsruhe Institute of Technology}\\
+ {\small Institute for Automation and Applied Informatics}\\
+ {\small Summer Term 2020}\\
+\end{flushright}
+
+ 
+ \vspace{-0.5em}
+ \hrulefill
+ \vspace{0.3em}
+
+\begin{center}
+ \textbf{\textsc{\Large Tutorial V: Investment and Large Power Systems}}\\
+ \small Will be worked on in the exercise session on Friday, 26 June 2020.\\[1.5em]
+\end{center}
+
+\vspace{-0.5em}
+\hrulefill
+\vspace{0.8em}
+
+\vspace{1em}
+
+%=============== ======================================================
+\paragraph{Problem V.1 (analytical) -- investment in generators and transmission lines}~\\
+%=====================================================================
+
+Two generators are connected to the grid by a single transmission
+line (with no electrical demand on their side of the transmission line). A single company owns both the generators and the transmission line. Generator 1 has a linear cost curve $C_1(g_1) = 5 g_1$ [\euro/h] and a capacity of 300~MW and Generator 2 has a linear cost curve $C_2(g_2) = 10 g_2$ [\euro/h] and a capacity of 900~MW. The transmission line has a capacity $K$ of 1000~MW. Suppose the demand in the grid is always high enough to absorb the
+generation from the two generators and that the market price of
+electricity $\pi$ is never below 15 \euro/MWh and averages 20
+\euro/MWh.
+
+\begin{enumerate}[(a)]
+ \item Determine the full set of equations (objective function and
+       constraints) for the generators to optimise their dispatch to
+       maximise total economic welfare.
+ \item What is the optimal dispatch?
+ \item What are the values of the KKT multipliers for all the constraints in terms of $\pi$?
+ \item A new turbo-boosting technology can increase the capacity of Generator 1 from 300~MW to 350~MW.  At what annualised capital cost would it be efficient to invest in this new technology?
+ \item A new high temperature conductor technology can increase the capacity of the transmission line by 200~MW. At what annualised capital cost would it be efficient to invest in this new technology?
+\end{enumerate}
+
+\newpage
+%=============== ======================================================
+\paragraph{Problem V.2 (anal./prog.) -- duration curves and generation investment}~\\
+%=====================================================================
+
+Let us suppose that demand is inelastic. The demand-duration curve is given by $D=1000-1000z$, where $z\in [0,1]$ represents the probability of time the load spends above a certain value. Suppose that there is a choice between coal and gas generation plants with a variable cost of 2 and 12~\euro/MWh, together with load-shedding at 1012\euro/MWh. The fixed costs of coal and gas generation are 15 and 10~\euro/MWh, respectively.
+
+\begin{enumerate}[(a)]
+ \item Describe the concept of a screening curve and how it helps to determine generation investment, given a demand-duration curve.
+ \item Plot the screening curve and find the intersections of the generation technologies.
+ \item Compute the long-term equilibrium power plant investment (optimal mix of generation) using PyPSA.
+ \item Plot the resulting price duration curve and the generation dispatch. Comment!
+ \item Demonstrate that the zero-profit condition is fulfilled.
+ \item While it can be shown that generators recover their cost in theory, name reasons why this might not be the case in reality.
+\end{enumerate}
+
+\newpage
+%=============== ======================================================
+\paragraph{Problem V.3 (programming) -- generator dispatch with SciGRID}~\\
+%=====================================================================
+
+SciGRID\footnote{\url{https://www.power.scigrid.de/pages/general-information.html}} is a project that provides an open source reference model of the European transmission networks. In this tutorial, other than previous simple examples, you will examine the economic dispatch of many generators all over Germany and its effect on the power system. The data files for this example and a populated Jupyter notebook are provided on the course homepage\footnote{\url{https://nworbmot.org/courses/esm-2019/}} or in your tutorial package. The dataset comprises time series for loads and the availability of renewable generation at an hourly resolution for the year 2011. Feel free to choose a day to your liking: \texttt{2011-01-31} was the least windy day of 2011, \texttt{2011-02-05} was a stormy day with lots of wind energy production, \texttt{2011-07-12} was a very sunny day, and \texttt{2011-09-06} was a windy and sunny autumn day.
+
+\begin{enumerate}[(a)]
+ \item Describe the network as well as its regional and temporal characteristics.
+       \begin{enumerate}[(i)]
+        \item Plot the aggregated load curve.
+        \item Plot the total generation capacities grouped by generation technology. Why is the share of capacity for renewables higher than the share of electricity produced?
+        \item Plot the regional distribution of the loads for different snapshots. What are the major load centres?
+        \item Plot the regional distribution of generation technologies. Comment!
+       \end{enumerate}
+ \item Run a linear optimal power flow to obtain the economic dispatch and analyse the results.
+       \begin{enumerate}[(i)]
+        \item To approximate n-1 security and allow room for reactive power flows, set the maximum line loading of any line in the network to 70 \% of their thermal rating.
+        \item Plot the hourly dispatch grouped by carrier for the chosen day. Comment!
+        \item Plot the aggregate dispatch of the pumped hydro storage units and the state of charge throughout the day and describe how they are used throughout the day.
+        \item Show the line loadings for different snapshots on the network. Can you identify a regional concentration of highly loaded branches?
+        \item Plot the locational marginal prices for snapshots on the network. What is the interpretation of high and low marginal prices? What do the geographical differences of nodal prices tell you about the regional generation capacity, load centres and the state of the transmission network?
+        \item Plot the curtailment for on- and offshore wind as well as for solar energy on the chosen day. Why is variable renewable electricity curtailed?  Would there still be curtailment if there were unlimited transmission capacity? What happens to the nodal prices in this case?
+       \end{enumerate}
+ \item Perform a non-linear power flow (Newton-Raphson) on the injections determined by the linear optimal power flow.
+       \begin{enumerate}[(i)]
+        \item Plot the regional and temporal distribution of reactive power feed-in. What is the consequence of reactive flows in terms of the network's transfer capacity?
+        \item Analyse whether the chosen security constraint for thermal line loading  was sufficient. What happens if you omit the security constraint or require an even higher security constraint?
+       \end{enumerate}
+\end{enumerate}
+
+
+%=============== ======================================================
+%\paragraph{Problem V.4 \normalsize (network clustering).}~\\
+%=====================================================================
+
+\end{document}
