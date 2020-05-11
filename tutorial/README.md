@@ -4,7 +4,7 @@ You can find the worksheets for every tutorial in the respective folder 'x-tutor
 They consits out of analytic (hand-written) and programming exercises.
 ## :notebook: Notebooks
 For all the programming exercises you can find jupyter-notebooks with **additional hints** in 'x-tutorial-date/notebooks'.
-It is not compulsory to make the exercises in a jupyter-notebook but it made be helpful to look at them if you are stucked
+It is not compulsory to make the exercises in a jupyter-notebook but it might be helpful to look at them if you are stucked
 to check out the hints.
 You can also convert the jupyter-notebooks to a python script using [nbconvert](https://nbconvert.readthedocs.io/en/latest/install.html)
 ```
