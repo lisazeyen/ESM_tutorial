@@ -7,7 +7,7 @@ The tutorials include both, coding exercises and calculations done by hand.
 There's a worksheet (`X-sheet.pdf`) for every tutorial in `X-tutorial-date/worksheet`.
 
 If the tutorial includes coding exercises (some tutorials have no coding exercises),
-there are `jupyter notebooks` (`tutorial-X-task-Y.ipynb`) and data sources provided in `X-tutorial-date/data`.
+there are `jupyter notebooks` (`tutorial-X-task-Y.ipynb`) and data sources provided in `X-tutorial-date/notebooks/data`.
 
 # :blue_book: Python Tutorials
 
