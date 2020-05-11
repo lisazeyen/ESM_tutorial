@@ -1,4 +1,4 @@
-#  :mortar_board: Tutorial
+#  :mortar_board: Structure of this folder
 ## Worksheets
 You can find the worksheets for every tutorial in the respective folder 'x-tutorial-date/worksheet'.
 They consits out of analytic (hand-written) and programming exercises.
