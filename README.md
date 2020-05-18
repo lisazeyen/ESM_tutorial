@@ -53,17 +53,17 @@ We recommend using the package manager and environment management system `conda`
 Install [`miniconda`](https://conda.io/docs/user-guide/install/index.html) (or Anaconda). For instructions for your operating system
 see https://conda.io/docs/user-guide/install/index.html. 
 
-Create a new `conda` environment from the provided `environment.yaml` file with the following set of commands:
+Create a new `conda` environment from the provided `environment.yml` file with the following set of commands:
 
 Windows:
 ```bash
-conda env create -f environment.yaml
+conda env create -f environment.yml
 activate esm-tutorials
 ```
 
 macOS and Linux:
 ```bash
-conda env create -f environment.yaml
+conda env create -f environment.yml
 conda activate esm-tutorials
 ```
 
