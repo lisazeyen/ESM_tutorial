@@ -190,4 +190,37 @@ Assume that the demands $D_A$ and $D_B$ are constant and insensitive to price, t
  \item Calculate the congestion surplus for case (v). For what values of the flow on the line between buses A and B is the congestion surplus equal to zero?
 \end{enumerate}
 
+
+\newpage
+
+%=============== ======================================================
+\paragraph{Problem IV.4 (programming) -- generator dispatch with SciGRID \faHome}~\\
+%=====================================================================
+
+SciGRID\footnote{\url{https://www.power.scigrid.de/pages/general-information.html}} is a project that provides an open source reference model of the European transmission networks. In this tutorial, other than previous simple examples, you will examine the economic dispatch of many generators all over Germany and its effect on the power system. The data files for this example and a populated Jupyter notebook are provided on the course homepage\footnote{\url{https://nworbmot.org/courses/esm-2020/}} or in your tutorial package. The dataset comprises time series for loads and the availability of renewable generation at an hourly resolution for the year 2011. Feel free to choose a day to your liking: \texttt{2011-01-31} was the least windy day of 2011, \texttt{2011-02-05} was a stormy day with lots of wind energy production, \texttt{2011-07-12} was a very sunny day, and \texttt{2011-09-06} was a windy and sunny autumn day.
+
+\begin{enumerate}[(a)]
+	\item Describe the network as well as its regional and temporal characteristics.
+	\begin{enumerate}[(i)]
+		\item Plot the aggregated load curve.
+		\item Plot the total generation capacities grouped by generation technology. Why is the share of capacity for renewables higher than the share of electricity produced?
+		\item Plot the regional distribution of the loads for different snapshots. What are the major load centres?
+		\item Plot the regional distribution of generation technologies. Comment!
+	\end{enumerate}
+	\item Run a linear optimal power flow to obtain the economic dispatch and analyse the results.
+	\begin{enumerate}[(i)]
+		\item To approximate n-1 security and allow room for reactive power flows, set the maximum line loading of any line in the network to 70 \% of their thermal rating.
+		\item Plot the hourly dispatch grouped by carrier for the chosen day. Comment!
+		\item Plot the aggregate dispatch of the pumped hydro storage units and the state of charge throughout the day and describe how they are used throughout the day.
+		\item Show the line loadings for different snapshots on the network. Can you identify a regional concentration of highly loaded branches?
+		\item Plot the locational marginal prices for snapshots on the network. What is the interpretation of high and low marginal prices? What do the geographical differences of nodal prices tell you about the regional generation capacity, load centres and the state of the transmission network?
+		\item Plot the curtailment for on- and offshore wind as well as for solar energy on the chosen day. Why is variable renewable electricity curtailed?  Would there still be curtailment if there were unlimited transmission capacity? What happens to the nodal prices in this case?
+	\end{enumerate}
+	\item Perform a non-linear power flow (Newton-Raphson) on the injections determined by the linear optimal power flow.
+	\begin{enumerate}[(i)]
+		\item Plot the regional and temporal distribution of reactive power feed-in. What is the consequence of reactive flows in terms of the network's transfer capacity?
+		\item Analyse whether the chosen security constraint for thermal line loading  was sufficient. What happens if you omit the security constraint or require an even higher security constraint?
+	\end{enumerate}
+\end{enumerate}
+
 \end{document}

@@ -19,6 +19,7 @@
 \usepackage{amsfonts}
 \usepackage{bbm}
 \usepackage{mathtools}
+\usepackage{fontawesome}
 % \usepackage{epsfig}
 % \usepackage{grffile}
 %\usepackage{times}
@@ -110,7 +111,7 @@
 \vspace{1em}
 
 %=============== ======================================================
-\paragraph{Problem V.1 (analytical) -- investment in generators and transmission lines}~\\
+\paragraph{Problem V.1 (analytical) -- investment in generators and transmission lines \faGroup}~\\
 %=====================================================================
 
 Two generators are connected to the grid by a single transmission
@@ -131,7 +132,7 @@ electricity $\pi$ is never below 15 \euro/MWh and averages 20
 
 \newpage
 %=============== ======================================================
-\paragraph{Problem V.2 (anal./prog.) -- duration curves and generation investment}~\\
+\paragraph{Problem V.2 (anal./prog.) -- duration curves and generation investment \faGroup}~\\
 %=====================================================================
 
 Let us suppose that demand is inelastic. The demand-duration curve is given by $D=1000-1000z$, where $z\in [0,1]$ represents the probability of time the load spends above a certain value. Suppose that there is a choice between coal and gas generation plants with a variable cost of 2 and 12~\euro/MWh, together with load-shedding at 1012\euro/MWh. The fixed costs of coal and gas generation are 15 and 10~\euro/MWh, respectively.
@@ -145,40 +146,10 @@ Let us suppose that demand is inelastic. The demand-duration curve is given by $
  \item While it can be shown that generators recover their cost in theory, name reasons why this might not be the case in reality.
 \end{enumerate}
 
-\newpage
-%=============== ======================================================
-\paragraph{Problem V.3 (programming) -- generator dispatch with SciGRID}~\\
-%=====================================================================
-
-SciGRID\footnote{\url{https://www.power.scigrid.de/pages/general-information.html}} is a project that provides an open source reference model of the European transmission networks. In this tutorial, other than previous simple examples, you will examine the economic dispatch of many generators all over Germany and its effect on the power system. The data files for this example and a populated Jupyter notebook are provided on the course homepage\footnote{\url{https://nworbmot.org/courses/esm-2020/}} or in your tutorial package. The dataset comprises time series for loads and the availability of renewable generation at an hourly resolution for the year 2011. Feel free to choose a day to your liking: \texttt{2011-01-31} was the least windy day of 2011, \texttt{2011-02-05} was a stormy day with lots of wind energy production, \texttt{2011-07-12} was a very sunny day, and \texttt{2011-09-06} was a windy and sunny autumn day.
-
-\begin{enumerate}[(a)]
- \item Describe the network as well as its regional and temporal characteristics.
-       \begin{enumerate}[(i)]
-        \item Plot the aggregated load curve.
-        \item Plot the total generation capacities grouped by generation technology. Why is the share of capacity for renewables higher than the share of electricity produced?
-        \item Plot the regional distribution of the loads for different snapshots. What are the major load centres?
-        \item Plot the regional distribution of generation technologies. Comment!
-       \end{enumerate}
- \item Run a linear optimal power flow to obtain the economic dispatch and analyse the results.
-       \begin{enumerate}[(i)]
-        \item To approximate n-1 security and allow room for reactive power flows, set the maximum line loading of any line in the network to 70 \% of their thermal rating.
-        \item Plot the hourly dispatch grouped by carrier for the chosen day. Comment!
-        \item Plot the aggregate dispatch of the pumped hydro storage units and the state of charge throughout the day and describe how they are used throughout the day.
-        \item Show the line loadings for different snapshots on the network. Can you identify a regional concentration of highly loaded branches?
-        \item Plot the locational marginal prices for snapshots on the network. What is the interpretation of high and low marginal prices? What do the geographical differences of nodal prices tell you about the regional generation capacity, load centres and the state of the transmission network?
-        \item Plot the curtailment for on- and offshore wind as well as for solar energy on the chosen day. Why is variable renewable electricity curtailed?  Would there still be curtailment if there were unlimited transmission capacity? What happens to the nodal prices in this case?
-       \end{enumerate}
- \item Perform a non-linear power flow (Newton-Raphson) on the injections determined by the linear optimal power flow.
-       \begin{enumerate}[(i)]
-        \item Plot the regional and temporal distribution of reactive power feed-in. What is the consequence of reactive flows in terms of the network's transfer capacity?
-        \item Analyse whether the chosen security constraint for thermal line loading  was sufficient. What happens if you omit the security constraint or require an even higher security constraint?
-       \end{enumerate}
-\end{enumerate}
 
 
 %=============== ======================================================
-\paragraph{Problem V.4 (programming) -- synthetic fuels}~\\
+\paragraph{Problem V.3 (programming) -- synthetic fuels \faHome}~\\
 Diesel can be produced via Fischer-Tropsch process from hydrogen and carbon dioxide. Assume, an constant electric demand and a constant traffic energy demand of each 1 MWh/day. The traffic demand can be satisfied by diesel cars.
 \begin{enumerate}[(a)]
 	\item Why do we need to track the CO$_2$ emissions for this problem?
