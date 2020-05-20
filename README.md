@@ -92,9 +92,9 @@ cd /path/where/your/tutorial/folder/should/be
 cd esm-tutorials
 jupyter notebook
 ```
-# :ok_woman: Problems with installation
+# :ok_woman: Problems with the installation
 
-if there are problems with installing and updating the environment you can use ['Binder'](https://mybinder.org/). It will create the enivironment and open a jupyter notebook. To use binder click on the blue badge or follow the link
+If there are problems installing and updating the environment you can use ['Binder'](https://mybinder.org/). It will create the enivironment and open a jupyter notebook. To use binder click on the blue badge or follow the link
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lisazeyen/ESM_tutorial.git/master)
 
