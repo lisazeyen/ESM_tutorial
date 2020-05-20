@@ -17,9 +17,8 @@ dependencies:
     - numpy
     - scipy
     - pandas
+    - cartopy
     - geopandas
-    - xarray
-    - netcdf4
     - networkx
     - matplotlib
     - yaml
