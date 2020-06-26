@@ -1,0 +1,329 @@
+\documentclass[11pt,a4paper,fleqn]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue, filecolor=blue,urlcolor=blue]{hyperref}
+\hypersetup{
+     colorlinks   = true,
+     citecolor    = gray
+}
+\usepackage{wrapfig}
+
+\usepackage{caption}
+\captionsetup{format=plain, indent=5pt, font=footnotesize, labelfont=bf}
+
+\setkomafont{disposition}{\scshape\bfseries}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{bbm}
+\usepackage{mathtools}
+% \usepackage{epsfig}
+% \usepackage{grffile}
+%\usepackage{times}
+%\usepackage{babel}
+\usepackage{tikz}
+\usepackage{paralist}
+\usepackage{color}
+\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=3cm]{geometry}
+%\setlength{\mathindent}{1ex}
+
+% PGF
+\usepackage{pgfplots}
+\usepackage{pgf}
+\usepackage{siunitx}
+\usepackage{xfrac}
+\usepackage{calculator}
+\usepackage{calculus}
+\usepackage{eurosym}
+\usepackage{booktabs}
+%\sisetup{per-mode=fraction,%
+%	fraction-function=\sfrac}
+
+%\newcommand{\eur}[1]{\EUR{#1}\si{\per\kilo\meter}}
+\pgfplotsset{
+  compat=newest,
+  every axis/.append style={small, minor tick num=3}
+}
+
+%\usepackage[backend=biber,style=alphabetic,url=false,doi=false]{biblatex}
+%\addbibresource{sheet01_biber.bib}
+% \addbibresource{/home/coroa/papers/refs.bib}
+
+\newcommand{\id}{\mathbbm{1}}
+\newcommand{\NN}{{\mathbbm{N}}}
+\newcommand{\ZZ}{{\mathbbm{Z}}}
+\newcommand{\RR}{{\mathbbm{R}}}
+\newcommand{\CC}{{\mathbbm{C}}}
+\renewcommand{\vec}[1]{{\boldsymbol{#1}}}
+
+\renewcommand{\i}{\mathrm{i}}
+
+\newcommand{\expect}[1]{\langle\,#1\,\rangle}
+\newcommand{\e}[1]{\ensuremath{\,\mathrm{#1}}}
+
+\renewcommand{\O}{\mc{O}}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\ud}[1]{\textup{d}#1\,}
+
+\newcommand{\unclear}[1]{\color{green}#1}
+\newcommand{\problem}[1]{\color{red}#1}
+\newcommand{\rd}[1]{\num[round-mode=places,round-precision=1]{#1}}
+
+%\DeclareSIUnit{\euro}{\EUR}
+\DeclareSIUnit{\dollar}{\$}
+\newcommand{\eur}{\text{\EUR{}}}
+
+\newcommand{\lgans}{\textquotedblleft}
+\newcommand{\rgans}{\textquotedblright}
+\newcommand{\D}{\Delta}
+
+\def\l{\lambda}
+\def\m{\mu}
+\def\d{\partial}
+\def\nn{\nonumber}
+
+
+\newcommand{\ubar}[1]{\text{\b{$#1$}}}
+
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\dx}[1]{\mbox{d}{#1}}
+\renewcommand{\vec}[1]{{\bf #1}}
+
+\usepackage{palatino}
+\usepackage{mathpazo}
+\setlength\parindent{0pt}
+\usepackage{xcolor}
+\usepackage{framed}
+\definecolor{shadecolor}{rgb}{.9,.9,.9}
+
+%=====================================================================
+%=====================================================================
+\begin{document}
+
+\begin{flushright}
+  \textbf{Energy System Modelling }\\
+  {\small Karlsruhe Institute of Technology}\\
+  {\small Institute for Automation and Applied Informatics}\\
+  {\small Summer Term 2020}\\
+ \end{flushright}
+ 
+  
+  \vspace{-0.5em}
+  \hrulefill
+  \vspace{0.3em}
+ 
+ \begin{center}
+  \textbf{\textsc{\Large Solution V: Investment and Large Power Systems}}\\
+  \small Will be worked on in the exercise session on Thursday, 26 June 2020.\\[1.5em]
+ \end{center}
+ 
+ \vspace{-0.5em}
+ \hrulefill
+ \vspace{0.8em}
+
+%=============== ======================================================
+\paragraph{Solution V.1 \normalsize (investment, generator and transmission constraints).}~\\
+%=====================================================================
+
+Two generators are connected to the grid by a single transmission
+line (with no electrical demand on their side of the transmission line). A single company owns both the generators and the transmission line. Generator 1 has a linear cost curve $C_1(g_1) = 5 g_1$ [\euro/h] and a capacity of 300~MW and Generator 2 has a linear cost curve $C_2(g_2) = 10 g_2$ [\euro/h] and a capacity of 900~MW. The transmission line has a capacity $K$ of 1000~MW. Suppose the demand in the grid is always high enough to absorb the
+generation from the two generators and that the market price of
+electricity $\pi$ is never below 15 \euro/MWh and averages 20
+\euro/MWh.
+
+\begin{enumerate}[(a)]
+ \begin{shaded}\item Determine the full set of equations (objective function and
+  constraints) for the generators to optimise their dispatch to
+  maximise total economic welfare.\end{shaded}
+
+ Note that it is important in this example that the same company owns
+ both the generators and the transmission line; if an independent TSO
+ owned the transmission line, he could take the congestion revenue for
+ himself.
+
+ If we label the dispatch of Generator 1 by $g_1$ and of Generator 2 by $g_2$, then the objective function is to maximise total profit
+ \begin{equation*}
+  \max_{g_1,g_2} \left[ \pi (g_1+g_2) - C_1(g_1) - C_2(g_2) \right] =    \max_{g_1,g_2} \left[ \pi (g_1+g_2) - 5g_1 - 10g_2 \right]
+ \end{equation*}
+
+ The constraints are
+ \begin{align*}
+  g_1     & \leq \hat g_1 & \leftrightarrow & \bar{\m}_1  \\
+  -g_1    & \leq 0        & \leftrightarrow & \ubar{\m}_1 \\
+  g_2     & \leq \hat g_2 & \leftrightarrow & \bar{\m}_2  \\
+  -g_2    & \leq 0        & \leftrightarrow & \ubar{\m}_2 \\
+  g_1+g_2 & \leq K        & \leftrightarrow & \m_T
+ \end{align*}
+ Where the first four constraints come from generation, where $\hat g_1 = $ 300 MW and $\hat g_1 = $ 900 MW and the final constraint comes from the transmission, where $K = $ 1000~MW is the capacity of the export transmission line.
+
+ \begin{shaded}\item What is the optimal dispatch?\end{shaded}
+
+ Since the market price is always higher than the marginal price
+ of the generators, they will both run as high as possible given the
+ constraints. Since Generator 1 is cheaper than Generator 2, it will
+ max-out its capacity first, so that $g_1^* = \hat g_1 =$ 300~MW. Generator 2 will output as much as it can given the transmission constraint, so that $g_2^* =$ 700~MW.
+
+ \begin{shaded}\item What are the values of the KKT multipliers for all the constraints in terms of $\pi$?\end{shaded}
+
+ From stationarity we have for $g_1$ the non-zero terms:
+ \begin{align*}
+  0 & =   \frac{\d}{\d g_1} \left( \pi (g_1+g_2) - 5g_1 - 10g_2\right) - \bar{\m}_1 \frac{\d}{\d g_1} (g_1-\hat g_1)- \ubar{\m}_1 \frac{\d}{\d g_1} (-g_1) -\m_T \frac{\d}{\d g_1} (g_1+g_2-K)  \nn \\
+    & = \pi -5 - \bar{\m}_1 + \ubar{\m}_1 - \m_T
+ \end{align*}
+ For $g_2$ we have
+ \begin{align*}
+  0 & =   \frac{\d}{\d g_2} \left( \pi (g_1+g_2) - 5g_1 - 10g_2\right) - \bar{\m}_2 \frac{\d}{\d g_2} (g_2-\hat g_2)- \ubar{\m}_2 \frac{\d}{\d g_2} (-g_2) -\m_T \frac{\d}{\d g_2} (g_1+g_2-K)  \nn \\
+    & = \pi - 10- \bar{\m}_2 + \ubar{\m}_2 - \m_T
+ \end{align*}
+
+ At the optimal point we can see that $\ubar{\m}_1$, $\bar{\m}_2$ and $\ubar{\m}_2$ are non-binding, so these are zero. To solve for $\m_T$ and $\bar{\m}_1$ we have two equations:
+ \begin{align*}
+  0 & = \pi - 5 - \bar{\m}_1 - \m_T \nn \\
+  0 & = \pi - 10  - \m_T
+ \end{align*}
+ Therefore
+ \begin{align*}
+  \m_T       & = \pi - 10 \\
+  \bar{\m}_1 & = 5
+ \end{align*}
+
+ \begin{shaded}\item A new turbo-boosting technology can increase the capacity of Generator 1 from 300~MW to 350~MW.  At what annualised capital cost would it be efficient to invest in this new technology?\end{shaded}
+
+ The value of $\bar{\m}_1$ gives us the increase in profit for a small increase in $\hat{g}_1$. We want to understand a large increase in $\hat{g}_1$ of 50 MW, therefore we have to integrate over $\bar{\m}_1$ as a function of $\hat{g}_1$, since the value of $\bar{\m}_1$ may change as $\hat{g}_1$ changes. The total increase in profitability for expanding $\hat{g}_1$ from 300~MW to 350~MW is then
+ \begin{equation*}
+  \int_{300}^{350} \bar{\m}_1(\hat{g}_1) d\hat{g}_1
+ \end{equation*}
+ Because of the linearity of the problem,  $\bar{\m}_1$ is actually constant as we expand $\hat{g}_1$ in the region from 300~MW to 350~MW. The extra profit would be per year: 5 \euro/MWh * 50 MW * 8760h/a = \euro 2.19 million/a.
+ At or below this annualised capital cost, it would be worth investing.
+
+ \begin{shaded}\item A new high temperature conductor technology can increase the capacity of the transmission line by 200~MW. At what annualised capital cost would it be efficient to invest in this new technology?\end{shaded}
+
+ Here $\m_T$ changes as $K$ is expanded, so we have to integrate:
+ \begin{equation*}
+  \int_{1000}^{1200} \m_T(K) dK
+ \end{equation*}
+ Since  $\m_T$ is constant as we expand $K$ from 1000~MW to 1200~MW, the extra profit would be per year: (average$(\pi)$-10) \euro/MWh * 200 MW * 8760h/a = \euro 17.52 million/a.
+ At or below this annualised capital cost, it would be worth investing. An extension beyond 1200~MW would not bring any benefit, because the generator constraints would be then binding.
+\end{enumerate}
+%=============== ======================================================
+\paragraph{Solution V.2 \normalsize (duration curves and generation investment).}~\\
+%=====================================================================
+
+Let us suppose that demand is inelastic. The demand-duration curve is given by $D=1000-1000z$, where $z\in[0,1]$ represents the probability of time the load spends above a certain value. Suppose that there is a choice between coal and gas generation plants with a variable cost of 2 and 12~\euro/MWh, together with load-shedding at 1012\euro/MWh. The fixed costs of coal and gas generation are 15 and 10~\euro/MWh, respectively.
+
+\begin{enumerate}[(a)]
+ \begin{shaded}
+  \item Describe the concept of a screening curve and how it helps to determine generation investment, given a demand-duration curve.
+ \end{shaded}
+
+ A screening curve plots the costs of different generators as a
+ function of their utilization/capacity/usage factor so that they can
+ be compared based on their fixed and variable costs. The utilization
+ factor is plotted along the $x$ axis from 0 to 1, 0 corresponding to
+ no running time, 1 corresponding to the power plant running 100\% of
+ the time. The intercept of the curve of each generator with the $y$
+ axis is given by the fixed cost $f$ [\euro/MWh] (i.e. the cost with no
+ variable costs) and the slope is given by the variable cost $c$
+ [\euro/MWh].
+
+ The interception points of the linear curves of the different
+ generators determine the ranges of utilization factors in which one
+ generator is cheaper than another. By comparing the screening curves with the demand duration curve, the
+ correct generator capacities for different utilisation factors can be
+ determined (e.g. how much baseload power is required, how much peaking
+ power is required, how much load shedding).
+
+ \begin{shaded}\item Plot the screening curve and find the intersections of the generation technologies.\end{shaded}
+ First we work out the intersection points of
+ the generators as a function of their capacity factors, then we work out the
+ capacities $K_*$ of the generators.
+
+ The screening curves tell us above which capacity factor it costs less
+ to run one type of generator rather than another.
+
+
+ \begin{table}[!h]
+  \centering
+  \begin{tabular}{lrr}
+   \toprule
+   Generator     & $c_i$ [\euro/MWh] & $f_i$ [\euro/MWh] \\
+   \midrule
+   coal          & 2                 & 15                \\
+   gas           & 12                & 10                \\
+   load-shedding & 1012              & 0                 \\
+   \bottomrule
+  \end{tabular}
+ \end{table}
+
+ Generators coal and gas intersect at $x_{cg}$ given by
+ \begin{equation*}
+  15 + 2x_{cg} = 10 + 12x_{cg}
+ \end{equation*}
+ i.e. $x_{cg}=0.5$. This means that if the coal generator can run more than 50\% of the time, it should be built from an economic perspective.
+
+ Gas generator and load-shedding intersect at $x_{gl}$ given by
+ \begin{equation*}
+  10 + 12x_{gl} = 1012x_{gl}
+ \end{equation*}
+ i.e.\ $x_{gl}=1/100$. This means that for 1\% of the time we have load-shedding because it's not economical to cover the rare times of very high load.
+
+ \begin{shaded}\item Compute the long-term equilibrium power plant investment (optimal mix of generation) using PyPSA.\end{shaded}
+
+ The amount of load that is present at least $x_{cg}$ of the time determines $K_{coal}$, which we find by solving based on the load duration curve
+ \begin{equation*}
+  1000-1000x_{cg} = K_{coal} \xRightarrow{x_{cg}=0.5} K_{coal} = 500
+ \end{equation*}
+
+ To get the capacity of the gas generator we solve based on the load duration curve
+ \begin{equation*}
+  1000-1000x_{gl}=K_{coal}+ K_{gas} \xRightarrow{x_{cg}=0.5 \text{ and } K_{coal}=500} K_{gas} = 490
+ \end{equation*}
+
+ Load above $K_{coal}+ K_{gas}=990$ is shed. Thus, $K_{load-shedding}=10$.
+
+ \begin{shaded}\item Plot the resulting price duration curve and the generation dispatch. Comment!\end{shaded}
+ cf.\ Jupyter Notebook
+ \begin{shaded}\item Demonstrate that the zero-profit condition is fulfilled.\end{shaded}
+ cf.\ Jupyter Notebook
+ \begin{shaded}
+  \item While it can be shown that generators recover their cost in theory, name reasons why this might not be the case in reality.
+ \end{shaded}
+ Several factors make this theoretical picture quite different in reality:
+ \begin{itemize}
+  \item Generation investment is lumpy; i.e. you can often only
+        build power stations in e.g. 500~MW blocks, not in continuous chunks.
+  \item Some older generators have sunk costs, i.e. costs which have been incurred once and cannot be recovered, which alters their behaviour (i.e. the $f$ term is not evenly distributed across all hours)
+  \item Returns on scale in building plant are not taken into account (we did everything linear)
+  \item Site-specific concerns ignored (e.g. lignite might need to be near a mine and have limited capacity)
+  \item Variability of production for wind/solar ignored
+  \item There is considerable  uncertainty given load/weather conditions during a year, which makes investment risky; economic downturns reduce electricity demand
+  \item Fuel cost fluctuations, building delays which cost money
+  \item Risks from third-parties:  Changing costs of other generators, political risks (carbon taxes,  Atomausstieg, subsidies for renewables, price caps)
+  \item Political or administrative constraints on wholesale energy
+        prices may prevent prices from rising high enough for long enough
+        to justify generation investment (``Missing Money Problem'')
+  \item  Lead-in time for planning and building, behaviour of others, boom-and-bust investment cycles resulting from periods of under- and over-investment in capacity
+  \item Exercise of market power
+ \end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+%=============== ======================================================
+\paragraph{Solution V.3 \normalsize (synthetic fuels).}~\\
+%=====================================================================
+
+cf. Jupyter Notebook
+
+%=============== ======================================================
+%\paragraph{Solution V.4 \normalsize (network clustering).}~\\
+%=====================================================================
+
+\end{document}
