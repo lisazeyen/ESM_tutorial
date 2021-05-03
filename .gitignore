@@ -1,0 +1,10 @@
+# ignore all logs
+*.log
+# ignore all latex helpers
+*.aux
+*.out
+*.gz
+# ignore all jupyter notebook check points
+*.ipynb_checkpoints/
+# ignore yearly data
+*year.csv
