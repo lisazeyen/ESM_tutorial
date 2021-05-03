@@ -1,0 +1,7 @@
+repos:
+- repo: https://github.com/aflc/pre-commit-jupyter
+  rev: v1.0.0
+  hooks:
+  - id: jupyter-notebook-cleanup
+    args:
+    - --remove-kernel-metadata

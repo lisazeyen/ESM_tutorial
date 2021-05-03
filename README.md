@@ -31,7 +31,7 @@ Further reference material of help is are the website-books http://python-course
 
 # :abacus: Tutorials via Binder
 
-You can use [Binder](https://mybinder.org/) to run code from the Jupyter Notebooks online. It will create the necessary software packages and open a Jupyter Notebook from a remote server. To use binder click on the blue badge or follow the link
+You can use [Binder](https://mybinder.org/) to directly run code from the Jupyter Notebooks online without a local installation. It will create the necessary software packages and open a Jupyter Notebook from a remote server. To use binder click on the blue badge or follow the link
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lisazeyen/ESM_tutorial.git/master)
 
@@ -41,7 +41,7 @@ It might take a moment, so please be patient :upside_down_face:
 
 You should now be ready to do the tutorials in the browser :partying_face:
 
-# :arrow_down: Downloading Tutorial Material
+# :arrow_down: Download
 
 If you prefer to do the tutorials locally with your own Python installation,
 first download the tutorials with `git` with the following command:
