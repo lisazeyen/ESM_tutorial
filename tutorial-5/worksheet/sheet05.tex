@@ -89,10 +89,10 @@
 \begin{document}
 
 \begin{flushright}
- \textbf{Energy System Modelling }\\
- {\small Karlsruhe Institute of Technology}\\
- {\small Institute for Automation and Applied Informatics}\\
- {\small Summer Term 2020}\\
+	\textbf{Energy Systems}\\
+	{\small Technical University of Berlin}\\
+	{\small Department of Digital Transformation in Energy Systems}\\
+	{\small Summer Term 2021}\\
 \end{flushright}
 
  
@@ -155,7 +155,8 @@ Diesel can be produced via Fischer-Tropsch process from hydrogen and carbon diox
 \begin{enumerate}[(a)]
 	\item  read the demand data (given in MWh) for electricity and transport. Plot the time series. How do you explain the shape of the transport demand?
 	\item What is the meaning of \texttt{e\_cyclic}, \texttt{e\_inital} and \texttt{e\_min\_pu} for the component \texttt{store} in the PyPSA syntax?
-	\item Complete the jupyter notebook to build a PyPSA model including the transport and electricity demand. Set as snapshots the given demand time period. Add a bus and a store for hydrogen, gas and CO$_2$. Electricity can be generated withan Open-Cycle-gas turbine (OCGT) and for transport diesel cars are used. Assume that the amount of emitted CO$_2$ to the atmosphere is equal to the amount of used gas in the OCGT/ used diesel in the car. The whole required diesel should be also produced via Fischer-Tropsch during the investigated period. Why do we need to track the CO$_2$ emissions for this problem?
+	\item Complete the jupyter notebook to build a PyPSA model including the transport and electricity demand. Set as snapshots the given demand time period. Add a bus and a store for hydrogen, gas and CO$_2$. Electricity can be generated with
+an Open-Cycle-gas turbine (OCGT) and for transport diesel cars are used. Assume that the amount of emitted CO$_2$ to the atmosphere is equal to the amount of used gas in the OCGT/ used diesel in the car. The whole required diesel should be also produced via Fischer-Tropsch during the investigated period. Why do we need to track the CO$_2$ emissions for this problem?
 	\item Run an investment optimisation of the problem
 		\begin{enumerate}[(i)]
 		\item Show that the total amount of carbon stays constant in every time step
